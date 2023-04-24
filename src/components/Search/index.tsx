@@ -1,28 +1,25 @@
-import { FC, useState, useRef } from 'react';
+import { FC, useRef } from 'react';
 import debounce from 'lodash.debounce';
 import { useSearchQuery } from '../../utils/hooks';
 import styles from './Search.module.scss';
 
 export const Search: FC = () => {
-   const [value, setValue] = useState<string>('');
    const inputRef = useRef<HTMLInputElement>(null);
 
-   const [, setQuery, clearQuery] = useSearchQuery();
+   const [query, setQuery, clearQuery] = useSearchQuery();
+
+   const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+      updateSearchValue(event.target.value);
+   };
 
    const onClickClear = () => {
       clearQuery();
-      setValue('');
       inputRef.current?.focus();
    };
 
    const updateSearchValue = debounce((str: string) => {
       setQuery(str);
    }, 150);
-
-   const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-      setValue(event.target.value);
-      updateSearchValue(event.target.value);
-   };
 
    return (
       <div className={styles.root}>
@@ -62,12 +59,12 @@ export const Search: FC = () => {
          </svg>
          <input
             ref={inputRef}
-            value={value}
+            value={query}
             onChange={onChangeInput}
             className={styles.input}
             placeholder='Пошук піци...'
          />
-         {value && (
+         {query && (
             <svg
                onClick={onClickClear}
                className={styles.clearIcon}

@@ -15,13 +15,8 @@ import { useFetchPizzas } from '../utils/hooks';
 
 const Home: FC = () => {
    const { items, status } = useSelector(selectPizzaData);
-
+   
    useFetchPizzas();
-
-   const pizzas = items.map((obj) => <PizzaBlock key={obj.id} {...obj} />);
-   const skeletons = [...new Array(6)].map((_, index) => (
-      <Skeleton key={index} />
-   ));
 
    return (
       <div className='container'>
@@ -34,7 +29,11 @@ const Home: FC = () => {
             <ErrorFetching />
          ) : (
             <div className='content__items'>
-               {status === 'loading' ? skeletons : pizzas}
+               {status === 'loading'
+                  ? [...new Array(6)].map((_, index) => (
+                       <Skeleton key={index} />
+                    ))
+                  : items.map((obj) => <PizzaBlock key={obj.id} {...obj} />)}
             </div>
          )}
 

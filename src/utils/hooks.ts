@@ -10,6 +10,10 @@ import {
 import { SortPropertyEnum } from '../redux/filter/types';
 import { useEffect, useState } from 'react';
 import { fetchPizzas } from '../redux/pizza/asyncActions';
+import { Pizza } from '../redux/pizza/types';
+import axios from 'axios';
+import { INSTANCE } from './business';
+import { useNavigate } from 'react-router-dom';
 
 type PaginationReturnType = [number, (page: number) => void];
 
@@ -89,6 +93,25 @@ export const useFetchPizzas = () => {
 
       getPizzas();
    }, [categoryId, currentPage, dispatch, query, sort.sortProperty]);
+};
+
+export const useFetchSinglePizza = (id: string | undefined): [Pizza | null] => {
+   const [pizza, setPizza] = useState<Pizza | null>(null);
+   const navigate = useNavigate();
+   useEffect(() => {
+      const getSinglePizza = async () => {
+         try {
+            const { data } = await axios.get(INSTANCE + '/' + id);
+            setPizza(data as Pizza);
+         } catch (err) {
+            alert('Помилка при завантаженні піци');
+            navigate('/');
+         }
+      };
+      getSinglePizza();
+   }, [id, navigate]);
+
+   return [pizza];
 };
 
 // export const useBooleanState = (initial = false) => {
