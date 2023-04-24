@@ -1,25 +1,25 @@
-import { useEffect, FC, useRef } from 'react';
+import { useEffect, FC } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
 import logoSvg from '../assets/img/logo.svg';
 import { Search } from './Search';
 import { selectCart } from '../redux/cart/selectors';
+import useIsMounted from '../utils/hooks/useIsMounted';
 
 export const Header: FC = () => {
    const { items, totalPrice } = useSelector(selectCart);
    const location = useLocation();
-   const isMounted = useRef(false);
-
+   const isMounted = useIsMounted();
    const totalCount = items.reduce((sum: number, item) => sum + item.count, 0);
 
    useEffect(() => {
-      if (isMounted.current) {
+      const setCartInLS = async () => {
          const json = JSON.stringify(items);
          localStorage.setItem('cart', json);
-      }
-      isMounted.current = true;
-   }, [items]);
+      };
+      if (!isMounted()) return;
+      setCartInLS();
+   }, [items, isMounted]);
 
    return (
       <div className='header'>

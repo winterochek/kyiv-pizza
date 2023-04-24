@@ -1,14 +1,13 @@
-import React from 'react';
+import { FC } from 'react';
 import ReactPaginate from 'react-paginate';
-import { usePagination } from '../../utils/hooks';
+import { useCountPages, usePagination } from '../../utils/hooks';
 import styles from './Pagination.module.scss';
-// import { LIMIT_OF_ITEMS_PER_PAGE } from '../../utils/business';
 
-export const Pagination: React.FC = () => {
+export const Pagination: FC = () => {
    const [currentPage, onChangePage] = usePagination();
-   // const { items } = useSelector(selectPizzaData);
+   const [pageCount] = useCountPages();
 
-   // if (items.length < LIMIT_OF_ITEMS_PER_PAGE) return <div />;
+   if (!pageCount || pageCount === 1) return <div />;
    
    return (
       <ReactPaginate
@@ -18,7 +17,7 @@ export const Pagination: React.FC = () => {
          previousLabel='<'
          onPageChange={(event) => onChangePage(event.selected + 1)}
          pageRangeDisplayed={3}
-         pageCount={3}
+         pageCount={pageCount}
          forcePage={currentPage - 1}
       />
    );

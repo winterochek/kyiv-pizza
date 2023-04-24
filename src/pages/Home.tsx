@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { useSelector } from 'react-redux';
 
 import {
    Categories,
@@ -9,13 +8,12 @@ import {
    Pagination,
    ErrorFetching,
 } from '../components';
-
-import { selectPizzaData } from '../redux/pizza/selectors';
-import { useFetchPizzas } from '../utils/hooks';
+import useFetchPizzas from '../utils/hooks/useFetchPizzas';
+import useItems from '../utils/hooks/useItems';
 
 const Home: FC = () => {
-   const { items, status } = useSelector(selectPizzaData);
-   
+   const [displayItems,status ] = useItems();
+
    useFetchPizzas();
 
    return (
@@ -33,7 +31,9 @@ const Home: FC = () => {
                   ? [...new Array(6)].map((_, index) => (
                        <Skeleton key={index} />
                     ))
-                  : items.map((obj) => <PizzaBlock key={obj.id} {...obj} />)}
+                  : displayItems.map((obj) => (
+                       <PizzaBlock key={obj.id} {...obj} />
+                    ))}
             </div>
          )}
 
