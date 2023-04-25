@@ -8,7 +8,7 @@ export const Pagination: FC = () => {
    const [pageCount] = useCountPages();
 
    if (!pageCount || pageCount === 1) return <div />;
-   
+
    return (
       <ReactPaginate
          className={styles.root}

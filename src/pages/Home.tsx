@@ -12,7 +12,7 @@ import useFetchPizzas from '../utils/hooks/useFetchPizzas';
 import useItems from '../utils/hooks/useItems';
 
 const Home: FC = () => {
-   const [displayItems,status ] = useItems();
+   const [displayItems, status] = useItems();
 
    useFetchPizzas();
 
@@ -27,13 +27,17 @@ const Home: FC = () => {
             <ErrorFetching />
          ) : (
             <div className='content__items'>
-               {status === 'loading'
-                  ? [...new Array(6)].map((_, index) => (
-                       <Skeleton key={index} />
-                    ))
-                  : displayItems.map((obj) => (
-                       <PizzaBlock key={obj.id} {...obj} />
-                    ))}
+               {status === 'loading' ? (
+                  [...new Array(6)].map((_, index) => <Skeleton key={index} />)
+               ) : displayItems.length ? (
+                  displayItems.map((obj) => (
+                     <PizzaBlock key={obj.id} {...obj} />
+                  ))
+               ) : (
+                  <h2 style={{ marginBottom: '2.5rem' }}>
+                     Піци не знайдені 😕
+                  </h2>
+               )}
             </div>
          )}
 

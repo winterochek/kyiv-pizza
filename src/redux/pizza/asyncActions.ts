@@ -8,9 +8,9 @@ import { INSTANCE } from '../../utils/business';
 export const fetchPizzas = createAsyncThunk<Pizza[], SearchPizzaParams>(
    'pizza/fetchPizzasStatus',
    async (params) => {
-      const { sortBy, order, category, search } = params;
+      const { sortBy, order, category } = params;
       const { data } = await axios.get<Pizza[]>(INSTANCE, {
-         params: pickBy({ category, sortBy, order, search }, identity),
+         params: pickBy({ category, sortBy, order }, identity),
       });
       return data;
    }

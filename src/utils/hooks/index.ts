@@ -17,19 +17,23 @@ import { selectFilter } from '../../redux/filter/selectors';
 import { LIMIT_OF_ITEMS_PER_PAGE } from '../business';
 import { selectPizzaData } from '../../redux/pizza/selectors';
 import { useMemo } from 'react';
+import useMediaQuery from './useMediaQuery';
 
 export const useIndexes = (currentPage: number) => {
-   const startIndex = (currentPage - 1) * LIMIT_OF_ITEMS_PER_PAGE;
-   const endIndex = startIndex + LIMIT_OF_ITEMS_PER_PAGE;
+   const limit = useLimit();
+
+   const startIndex = (currentPage - 1) * limit;
+   const endIndex = startIndex + limit;
    return [startIndex, endIndex];
 };
 
 export const useCountPages = () => {
    const { count } = useSelector(selectPizzaData);
+   const limit = useLimit();
    const pageCount = useMemo(() => {
-      return count && Math.ceil(count / LIMIT_OF_ITEMS_PER_PAGE);
-   }, [count]);
-   return [pageCount]
+      return count && Math.ceil(count / limit);
+   }, [count, limit]);
+   return [pageCount];
 };
 
 export const usePagination = (): PaginationReturnType => {
@@ -67,4 +71,9 @@ export const useSort = (): SortReturnType => {
       dispatch(setSort(obj));
    };
    return [sort, changeSort];
+};
+
+export const useLimit = () => {
+   const mobile = useMediaQuery('(max-width: 600px)');
+   return !mobile ? LIMIT_OF_ITEMS_PER_PAGE : LIMIT_OF_ITEMS_PER_PAGE / 2;
 };
