@@ -1,4 +1,4 @@
-import { useEffect, FC } from 'react';
+import { useEffect, FC, memo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import logoSvg from '../assets/img/logo.svg';
@@ -6,7 +6,7 @@ import { Search } from './Search';
 import { selectCart } from '../redux/cart/selectors';
 import useIsMounted from '../utils/hooks/useIsMounted';
 
-export const Header: FC = () => {
+export const Header: FC = memo(() => {
    const { items, totalPrice } = useSelector(selectCart);
    const location = useLocation();
    const isMounted = useIsMounted();
@@ -75,4 +75,4 @@ export const Header: FC = () => {
          </div>
       </div>
    );
-};
+});

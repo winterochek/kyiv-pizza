@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 
 import {
    Categories,
@@ -11,7 +11,7 @@ import {
 import useFetchPizzas from '../utils/hooks/useFetchPizzas';
 import useItems from '../utils/hooks/useItems';
 
-const Home: FC = () => {
+const Home: FC = memo(() => {
    const [displayItems, status] = useItems();
 
    useFetchPizzas();
@@ -44,6 +44,6 @@ const Home: FC = () => {
          <Pagination />
       </div>
    );
-};
+});
 
 export default Home;

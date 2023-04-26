@@ -1,8 +1,8 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Header } from '../components';
 
-const MainLayout: FC = () => {
+const MainLayout: FC = memo(() => {
    return (
       <div className='wrapper'>
          <Header />
@@ -11,6 +11,6 @@ const MainLayout: FC = () => {
          </div>
       </div>
    );
-};
+});
 
 export default MainLayout;

@@ -1,18 +1,16 @@
-import React from 'react';
+import { FC, memo } from 'react';
 
 import styles from './NotFoundBlock.module.scss';
 
-export const NotFoundBlock: React.FC = () => {
-  return (
-    <div className={styles.root}>
-      <h1>
-        <span>😕</span>
-        <br />
-        Ничего не найдено
-      </h1>
-      <p className={styles.description}>
-        К сожалени данная страница отсутствует в нашем интернет-магазине
-      </p>
-    </div>
-  );
-};
+export const NotFoundBlock: FC = memo(() => {
+   return (
+      <div className={styles.root}>
+         <h1>
+            <span>😕</span>
+            <br />
+            Нічого не знайдено
+         </h1>
+         <p className={styles.description}>На жаль, такої сторінки не існує</p>
+      </div>
+   );
+});

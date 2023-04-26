@@ -1,9 +1,9 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { Link } from 'react-router-dom';
 
 import cartEmptyImg from '../assets/img/empty-cart.png';
 
-export const CartEmpty: FC = () => (
+export const CartEmpty: FC = memo(() => (
    <div className='cart cart--empty'>
       <h2>
          У вашому кошику порожньо <span>😕</span>
@@ -18,4 +18,4 @@ export const CartEmpty: FC = () => (
          <span>Повернутися назад</span>
       </Link>
    </div>
-);
+))

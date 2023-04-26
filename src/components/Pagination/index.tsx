@@ -1,9 +1,9 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import ReactPaginate from 'react-paginate';
 import { useCountPages, usePagination } from '../../utils/hooks';
 import styles from './Pagination.module.scss';
 
-export const Pagination: FC = () => {
+export const Pagination: FC = memo(() => {
    const [currentPage, onChangePage] = usePagination();
    const [pageCount] = useCountPages();
 
@@ -21,4 +21,4 @@ export const Pagination: FC = () => {
          forcePage={currentPage - 1}
       />
    );
-};
+});

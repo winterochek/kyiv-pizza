@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useState, memo } from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import useFetchSinglePizza from '../utils/hooks/useFetchSinglePizza';
@@ -9,7 +9,7 @@ import { TYPES } from '../utils/business';
 import { useAppDispatch } from '../redux/store';
 import { addItem } from '../redux/cart/slice';
 
-const FullPizza: FC = () => {
+const FullPizza: FC = memo(() => {
    const { id } = useParams();
    const dispatch = useAppDispatch();
    const [activeType, setActiveType] = useState(0);
@@ -105,6 +105,6 @@ const FullPizza: FC = () => {
          </div>
       </div>
    );
-};
+});
 
 export default FullPizza;

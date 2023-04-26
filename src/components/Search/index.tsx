@@ -1,9 +1,9 @@
-import { FC, useRef } from 'react';
+import { FC, memo, useRef } from 'react';
 import debounce from 'lodash.debounce';
 import { useSearchQuery } from '../../utils/hooks';
 import styles from './Search.module.scss';
 
-export const Search: FC = () => {
+export const Search: FC = memo(() => {
    const inputRef = useRef<HTMLInputElement>(null);
 
    const [query, setQuery, clearQuery] = useSearchQuery();
@@ -76,4 +76,4 @@ export const Search: FC = () => {
          )}
       </div>
    );
-};
+});

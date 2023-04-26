@@ -1,13 +1,11 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { CartItem, CartEmpty } from '../components';
-
 import { selectCart } from '../redux/cart/selectors';
 import { clearItems } from '../redux/cart/slice';
 
-const Cart: FC = () => {
+const Cart: FC = memo(() => {
    const dispatch = useDispatch();
    const { totalPrice, items } = useSelector(selectCart);
 
@@ -147,6 +145,6 @@ const Cart: FC = () => {
          </div>
       </div>
    );
-};
+});
 
 export default Cart;
