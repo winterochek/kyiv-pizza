@@ -15,14 +15,14 @@ body {
   border-radius: 10px;
   max-width: 1400px;
 }
+@media (max-width: 900px) {
+  @import './tablet';
+}
 
 @media (max-width: 600px) {
   @import './mobile'; 
 }
 
-@media (max-width: 900px) {
-  @import './tablet';
-}
 
 .content {
   padding: 40px 0;

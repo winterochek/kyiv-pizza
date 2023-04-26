@@ -14,6 +14,14 @@
          padding-bottom: 0;
          a {
             align-self: start;
+            .header__logo {
+               div {
+                  display: flex;
+                  flex-direction: column;
+                  gap: 0;
+                  align-items: start;
+               }
+            }
          }
          div {
             position: relative;

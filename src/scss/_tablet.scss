@@ -1,0 +1,84 @@
+.header {
+   padding: 20px 0;
+   position: relative;
+   .container {
+      display: flex;
+      flex-direction: column;
+      a {
+         align-self: start;
+         margin-bottom: 1rem;
+         .header__logo {
+            display: flex;
+            align-items: center;
+            div {
+               display: flex;
+               align-items: center;
+               gap: 10px;
+            }
+         }
+      }
+      ._root_7ji7s_1 {
+         width: 100%;
+         align-self: center;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         position: static;
+         // left: 30px;
+         // right: 30px;
+         svg {
+            display: none;
+         }
+      }
+      // .header__cart{
+      //     position: absolute;
+      //     right: 0;
+      //     left: 35%;
+      //     top: 1rem;
+      //     align-self: flex-end;
+      // }
+      .header__cart {
+         margin-top: 0;
+         position: absolute;
+         left: 75%;
+         right: 10px;
+         top: 20px;
+         a {
+            width: 40px !important;
+            max-width: 40px !important;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+         }
+         span,
+         div {
+            display: none;
+         }
+         svg {
+            margin: 0;
+            align-self: center;
+         }
+      }
+   }
+}
+
+.content {
+   padding: 20px 0 !important;
+}
+._root_lppts_1 {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 10px;
+   max-width: 600px !important;
+   overflow: scroll;
+}
+
+.fullPizzaContainer {
+   .fullPizza__top {
+      display: flex;
+      flex-direction: column-reverse;
+   }
+   overflow: hidden;
+}
