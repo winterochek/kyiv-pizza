@@ -3,6 +3,22 @@
    left: -120px;
 }
 
+@media (max-width: 900px) {
+   .root {
+      width: 100%;
+      align-self: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: static;
+      // left: 30px;
+      // right: 30px;
+      svg {
+         display: none;
+      }
+   }
+}
+
 .input {
    border: 1px solid rgba(0, 0, 0, 0.1);
    padding: 12px 20px;

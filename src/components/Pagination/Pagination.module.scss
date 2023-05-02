@@ -30,3 +30,24 @@
       }
    }
 }
+
+@media (max-width: 900px) {
+   .root {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      max-width: 600px !important;
+      overflow: scroll;
+   }
+}
+@media (max-width: 600px) {
+   .root {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      max-width: 330px !important;
+      overflow: scroll;
+   }
+}

@@ -17,26 +17,6 @@
             }
          }
       }
-      ._root_7ji7s_1 {
-         width: 100%;
-         align-self: center;
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         position: static;
-         // left: 30px;
-         // right: 30px;
-         svg {
-            display: none;
-         }
-      }
-      // .header__cart{
-      //     position: absolute;
-      //     right: 0;
-      //     left: 35%;
-      //     top: 1rem;
-      //     align-self: flex-end;
-      // }
       .header__cart {
          margin-top: 0;
          position: absolute;
@@ -65,14 +45,6 @@
 
 .content {
    padding: 20px 0 !important;
-}
-._root_lppts_1 {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   gap: 10px;
-   max-width: 600px !important;
-   overflow: scroll;
 }
 
 .fullPizzaContainer {
